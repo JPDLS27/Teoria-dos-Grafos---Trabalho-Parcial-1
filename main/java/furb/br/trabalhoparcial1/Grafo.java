@@ -101,7 +101,7 @@ public class Grafo<TIPO> {
             vertices.get(u).setCor("B");
         }
 
-        for (int u = 1; u < vertices.size(); u++) {
+        for (int u = 0; u < vertices.size(); u++) {
             if (vertices.get(u).getCor().equals("B")) {
                 ordem = "visitou " + vertices.get(u).getDado() + "\n";
                 ordem = dfsVisit(u, matrizAdj, ordem);
@@ -127,6 +127,37 @@ public class Grafo<TIPO> {
         ordem += vertices.get(u).getDado() + " saiu\n";
         return ordem;
     }
-}
 
-/**/
+    public String arestasDoGrafo(String[][] matrizAdj) {
+        String conjuntoE = "E = {";
+        int qtdArestas = 0;
+        int controle = 0;
+        Double quantiaA = 0.0;
+
+        for (int i = 0; i < matrizAdj.length; i++) {
+            for (int j = 0; j < matrizAdj[i].length; j++) {
+                if (matrizAdj[i][j] != "0  ") {
+                    for (int u = 0; u <= controle; u++) {
+                        if (controle <= u) {
+                            if (arestas.size() == u + 1) {
+                                conjuntoE += "(" + arestas.get(controle).getInicio().getDado() + ", " + arestas.get(controle).getFim().getDado() + ")";
+                            } else {
+                                conjuntoE += "(" + arestas.get(controle).getInicio().getDado() + ", " + arestas.get(controle).getFim().getDado() + "), ";
+                            }
+                        }
+                    }
+                    if (matrizAdj[i][j].equals(matrizAdj[j][i]) && controle < arestas.size()) {
+                        quantiaA += arestas.get(controle).getPeso() / 2.0;
+                        controle++;
+                    } else if (!matrizAdj[i][j].equals(matrizAdj[j][i]) && controle < arestas.size()) {
+                        qtdArestas += arestas.get(controle).getPeso();
+                        controle++;
+                    }
+                }
+            }
+        }
+
+        qtdArestas += quantiaA;
+        return conjuntoE += "}\n Quantidade de Arestas: " + qtdArestas;
+    }
+}

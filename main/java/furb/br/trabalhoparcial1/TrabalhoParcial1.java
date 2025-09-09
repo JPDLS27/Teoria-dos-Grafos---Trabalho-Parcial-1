@@ -3,7 +3,6 @@
  */
 package furb.br.trabalhoparcial1;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -12,7 +11,7 @@ import java.util.Scanner;
  */
 public class TrabalhoParcial1 {
 
-    public static void main(String[] args) throws Exception {
+    public TrabalhoParcial1() {
         Grafo<String> grafo = new Grafo<>();
         Scanner entrada = new Scanner(System.in);
         char decisao;
@@ -40,8 +39,8 @@ public class TrabalhoParcial1 {
                     System.out.println("Quais vertices sao conectados pela aresta?");
                     vi = entrada.next().toLowerCase();
                     vj = entrada.next().toLowerCase();
-                    // System.out.println("Qual o peso da aresta?");
-                    peso = 1;
+                    System.out.println("Qual o peso da aresta?");
+                    peso = entrada.nextInt();
                     grafo.adicionarAresta(peso, vi, vj);
                     grafo.imprimirMatrizAdj(matrizAdj, vi, vj, peso);
                     break;
@@ -56,6 +55,11 @@ public class TrabalhoParcial1 {
 
         grafo.imprimirMatrizAdj(matrizAdj, vi, vj, peso);
 
-        System.out.println(grafo.buscaEmProfundidade(matrizAdj));
+        System.out.println(grafo.arestasDoGrafo(matrizAdj));
+
+    }
+
+    public static void main(String[] args) throws Exception {
+        new TrabalhoParcial1();
     }
 }
