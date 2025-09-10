@@ -1,4 +1,8 @@
 /**
+ * Trabalho de Teoria dos Grafos - Análise de Grafos usando Matriz de Adjacência
+ * Alunos João Paulo e Rembrandt
+ * Data: 10/09/2025
+ * Professora: Patrícia Kayser Vargas Mangan
  * Classe principal para demonstração e testes
  */
 class AnalisadorGrafos {
